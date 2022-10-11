@@ -9,11 +9,11 @@ import Signup from './Component/signup'
 import UserLogin from './Component/userlogin'
 import TopRated from './Component/TopMovies'
 import TopReviews from './Component/TopReviews'
-import UserAddition from './Layout/useraddition'
+import UserAddition from './Layout/AddingByUser'
 import Footer from './Component/footer'
-import AddMov from './Layout/addmov'
+import AddMov from './Layout/AddMovieUser'
 import Users from './Component/Users';
-import Useracc from './Layout/useracc'
+import Useracc from './Layout/MovieAcceptance'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App() {
