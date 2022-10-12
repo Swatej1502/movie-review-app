@@ -35,6 +35,7 @@ Axios.defaults.withCredentials = true;
                      if (response.data.message === "success") {
                          setstatus("Added Movie");
                      }
+                     else if(response.data.message=="Movie Exists"){setstatus("Movie Exists")}
                      else {
                          setstatus("Something Went Wrong");
          

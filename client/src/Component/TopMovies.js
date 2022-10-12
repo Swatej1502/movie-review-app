@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import Header from '../Component/header'
+import Header from './header'
 
 
 
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
     const nav = useNavigate();
     const [data, setData] = useState([]);
-    const review = (id, name, url, rating, year, language, genre) => {
+    const checkReview = (id, name, url, rating, year, language, genre) => {
         nav('/rev', {
             state: {
                 id: id, name: name,
@@ -60,7 +60,13 @@ export default function Home() {
                                 <div className="col-lg-3">
                                     <div class="card mymovie-box ">
                                         <p class="notification">
-                                            <img src={item.url} class="card-img-top img-height " alt="..." />
+                                            <img src={item.url} onClick={() => checkReview(item.sl,
+                                                        item.name,
+                                                        item.url,
+                                                        item.rating,
+                                                        item.year,
+                                                        item.language,
+                                                        item.genre)} class="card-img-top img-height " alt="..." />
                                             <span class="badge">{item.genre}
                                             </span>
                                         </p>
@@ -68,7 +74,7 @@ export default function Home() {
                                         <div class="card-body card-wi">
                                             <h5 class="left">
                                                 <button href="#" id="myBtn-" class="mybtn1"
-                                                    onClick={() => review(item.sl,
+                                                    onClick={() => checkReview(item.sl,
                                                         item.name,
                                                         item.url,
                                                         item.rating,

@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Abhishek-BG/Movie-Rating-Web.git"
+    "url": "git+https://github.com/Swatej1502/movie-review-app.git.git"
   },
   "keywords": [
     "Web",
     "App"
   ],
-  "author": "Abhishek",
+  "author": "Swatej",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Abhishek-BG/Movie-Rating-Web/issues"
+    "url": "https://github.com/Swatej1502/movie-review-app.git/issues"
   },
-  "homepage": "https://github.com/Abhishek-BG/Movie-Rating-Web#readme",
+  "homepage": "https://github.com/Swatej1502/movie-review-app.git#readme",
   "dependencies": {
     "-": "^0.0.1",
     "axios": "^0.27.2",

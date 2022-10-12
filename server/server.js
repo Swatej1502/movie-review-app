@@ -144,25 +144,35 @@ app.post('/movie', (req, res) => {
     const genre = req.body.genre;
     const rating =0;
     const url = req.body.url;
-    db.execute(
-        "INSERT INTO movie (name,year,genre,language,rating,url) values(?,?,?,?,?,?) ",
-        [moviename,year,genre,language,rating,url],
-        (err, result)=> {
-          // console.log(result);
-            if (err) {
-               console.log(err); 
-            }
-            if (result.length > 0) {
-                res.send({message: "success"});
-                }
-           if(result.length <= 0)
-           {
-            res.send({ message: "error" })
-           }
-          
-            }
-        
-    );
+    db.query("SELECT * FROM movie Where name=? and year=?", 
+    [moviename,year],
+    (err, results, fields) => {
+        if(results.length > 0)
+        {   console.log(err);
+            res.send({ message:"Movie Exists"})
+        }else{
+            db.execute(
+                "INSERT INTO movie (name,year,genre,language,rating,url) values(?,?,?,?,?,?) ",
+                [moviename,year,genre,language,rating,url],
+                (err, result)=> {
+                  // console.log(result);
+                    if (err) {
+                       console.log(err); 
+                    }
+                    if (result.length > 0) {
+                        res.send({message: "success"});
+                        }
+                   if(result.length <= 0)
+                   {
+                    res.send({ message: "error" })
+                   }
+                  
+                    }
+                
+            );
+        }
+      });
+   
    });
 //submit rating 
 //

@@ -1,4 +1,4 @@
-import Header from '../Component/header'
+import Header from './header'
 import { useLocation } from 'react-router-dom';
 import React from 'react'
 import Session from '../session/session';
@@ -12,10 +12,12 @@ Axios.defaults.withCredentials = true;
 //movies
 export default function Movies() {
     const [data, setData] = useState([]);
+    
 
     const location = useLocation();
     Session.setmid(location.state.id);
     var x = 0, count = 0;
+    var msg="";
     const getData = () => {
         fetch('http://localhost:3001/Myrating'
             , {
@@ -41,6 +43,7 @@ export default function Movies() {
 
 
     { data.map((item2) => { if (location.state.id == item2.movie_id) { x = x + item2.rating; count++; } }) }
+
     return (
         <>
             <Header />
@@ -76,11 +79,13 @@ export default function Movies() {
                                 <div class="row ">
                                     {data.map((item) => {
                                         if (location.state.id == item.movie_id) {
+                                            if(item.user_role==0){msg="user";}else if(item.user_role==2){msg="Critic"}else if(item.user_role==1){msg="admin"}
                                             return (
+                                                
                                                 <div class="col-lg-3">
                                                     <div class="row">
                                                         <div class=" review-box ">
-                                                            <h4>{item.user_id} Says</h4>
+                                                            <h4>{item.user_id}({msg})</h4>
                                                             <div class="col-lg-3">
                                                                 <img class="test-img" src="https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png" />
                                                             </div>
